@@ -28,7 +28,7 @@ SOFTWARE.
 */
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L1
 //!BIND LUMA
 //!SAVE L1_1
@@ -41,15 +41,12 @@ const float kernelsL1[9 * 4] =
  0.0609,  0.1027, -0.0447,
 -0.1423,  0.7196,  0.1803,
  0.0842,  0.0696,  0.0082,
-
  0.0089,  0.1540, -0.8589,
  0.0448,  0.8659, -0.2420,
 -0.0364,  0.0585,  0.0125,
-
 -0.1937,  0.7259,  0.0119,
 -0.8266,  0.4147,  0.0088,
 -0.0453, -0.0451, -0.0182,
-
  0.0264, -0.9422,  0.1258,
 -0.0543,  0.1282,  0.7102,
 -0.0106,  0.0386, -0.0141
@@ -95,7 +92,7 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L1
 //!BIND LUMA
 //!SAVE L1_2
@@ -108,15 +105,12 @@ const float kernelsL1[9 * 4] =
  0.2054, -0.0393,  0.1494,
  0.3106,  0.5722,  0.2640,
  0.1708, -0.1640, -0.0212,
-
  0.0558, -0.2887, -0.1666,
  0.3123, -0.3097, -0.2281,
  0.2880,  0.3001,  0.0526,
-
 -0.0320,  0.0584, -0.0193,
 -0.0135,  1.0649, -0.1246,
  0.0283, -0.3030, -0.6378,
- 
 -0.0040, -0.9122,  0.0181,
  0.0365,  0.8947, -0.0420,
 -0.0199,  0.0217,  0.0060
@@ -162,7 +156,7 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L2
 //!BIND L1_1
 //!BIND L1_2
@@ -434,7 +428,7 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L2
 //!BIND L1_1
 //!BIND L1_2
@@ -705,11 +699,11 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L3
 //!BIND L2_1
 //!BIND L2_2
-//!SAVE L3_1
+//!SAVE L1_1
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -977,11 +971,11 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L3
 //!BIND L2_1
 //!BIND L2_2
-//!SAVE L3_2
+//!SAVE L1_2
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -1248,11 +1242,11 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L4
-//!BIND L3_1
-//!BIND L3_2
-//!SAVE L4_1
+//!BIND L1_1
+//!BIND L1_2
+//!SAVE L2_1
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -1364,25 +1358,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L3_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L3_1_texOff(vec2(0,-1));
-    vec4 tr1 = L3_1_texOff(vec2(1,-1));
-    vec4 ml1 = L3_1_texOff(vec2(-1,0));
-    vec4 mc1 = L3_1_texOff(vec2(0,0));
-    vec4 mr1 = L3_1_texOff(vec2(1,0));
-    vec4 bl1 = L3_1_texOff(vec2(-1,1));
-    vec4 bc1 = L3_1_texOff(vec2(0,1));
-    vec4 br1 = L3_1_texOff(vec2(1,1));
+    vec4 tl1 = L1_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L1_1_texOff(vec2(0,-1));
+    vec4 tr1 = L1_1_texOff(vec2(1,-1));
+    vec4 ml1 = L1_1_texOff(vec2(-1,0));
+    vec4 mc1 = L1_1_texOff(vec2(0,0));
+    vec4 mr1 = L1_1_texOff(vec2(1,0));
+    vec4 bl1 = L1_1_texOff(vec2(-1,1));
+    vec4 bc1 = L1_1_texOff(vec2(0,1));
+    vec4 br1 = L1_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L3_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L3_2_texOff(vec2(0,-1));
-    vec4 tr2 = L3_2_texOff(vec2(1,-1));
-    vec4 ml2 = L3_2_texOff(vec2(-1,0));
-    vec4 mc2 = L3_2_texOff(vec2(0,0));
-    vec4 mr2 = L3_2_texOff(vec2(1,0));
-    vec4 bl2 = L3_2_texOff(vec2(-1,1));
-    vec4 bc2 = L3_2_texOff(vec2(0,1));
-    vec4 br2 = L3_2_texOff(vec2(1,1));
+    vec4 tl2 = L1_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L1_2_texOff(vec2(0,-1));
+    vec4 tr2 = L1_2_texOff(vec2(1,-1));
+    vec4 ml2 = L1_2_texOff(vec2(-1,0));
+    vec4 mc2 = L1_2_texOff(vec2(0,0));
+    vec4 mr2 = L1_2_texOff(vec2(1,0));
+    vec4 bl2 = L1_2_texOff(vec2(-1,1));
+    vec4 bc2 = L1_2_texOff(vec2(0,1));
+    vec4 br2 = L1_2_texOff(vec2(1,1));
 
     vec4 c1234 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -1520,11 +1514,11 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L4
-//!BIND L3_1
-//!BIND L3_2
-//!SAVE L4_2
+//!BIND L1_1
+//!BIND L1_2
+//!SAVE L2_2
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -1636,25 +1630,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L3_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L3_1_texOff(vec2(0,-1));
-    vec4 tr1 = L3_1_texOff(vec2(1,-1));
-    vec4 ml1 = L3_1_texOff(vec2(-1,0));
-    vec4 mc1 = L3_1_texOff(vec2(0,0));
-    vec4 mr1 = L3_1_texOff(vec2(1,0));
-    vec4 bl1 = L3_1_texOff(vec2(-1,1));
-    vec4 bc1 = L3_1_texOff(vec2(0,1));
-    vec4 br1 = L3_1_texOff(vec2(1,1));
+    vec4 tl1 = L1_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L1_1_texOff(vec2(0,-1));
+    vec4 tr1 = L1_1_texOff(vec2(1,-1));
+    vec4 ml1 = L1_1_texOff(vec2(-1,0));
+    vec4 mc1 = L1_1_texOff(vec2(0,0));
+    vec4 mr1 = L1_1_texOff(vec2(1,0));
+    vec4 bl1 = L1_1_texOff(vec2(-1,1));
+    vec4 bc1 = L1_1_texOff(vec2(0,1));
+    vec4 br1 = L1_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L3_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L3_2_texOff(vec2(0,-1));
-    vec4 tr2 = L3_2_texOff(vec2(1,-1));
-    vec4 ml2 = L3_2_texOff(vec2(-1,0));
-    vec4 mc2 = L3_2_texOff(vec2(0,0));
-    vec4 mr2 = L3_2_texOff(vec2(1,0));
-    vec4 bl2 = L3_2_texOff(vec2(-1,1));
-    vec4 bc2 = L3_2_texOff(vec2(0,1));
-    vec4 br2 = L3_2_texOff(vec2(1,1));
+    vec4 tl2 = L1_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L1_2_texOff(vec2(0,-1));
+    vec4 tr2 = L1_2_texOff(vec2(1,-1));
+    vec4 ml2 = L1_2_texOff(vec2(-1,0));
+    vec4 mc2 = L1_2_texOff(vec2(0,0));
+    vec4 mr2 = L1_2_texOff(vec2(1,0));
+    vec4 bl2 = L1_2_texOff(vec2(-1,1));
+    vec4 bc2 = L1_2_texOff(vec2(0,1));
+    vec4 br2 = L1_2_texOff(vec2(1,1));
 
     vec4 c5678 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -1791,11 +1785,11 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L5
-//!BIND L4_1
-//!BIND L4_2
-//!SAVE L5_1
+//!BIND L2_1
+//!BIND L2_2
+//!SAVE L1_1
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -1907,25 +1901,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L4_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L4_1_texOff(vec2(0,-1));
-    vec4 tr1 = L4_1_texOff(vec2(1,-1));
-    vec4 ml1 = L4_1_texOff(vec2(-1,0));
-    vec4 mc1 = L4_1_texOff(vec2(0,0));
-    vec4 mr1 = L4_1_texOff(vec2(1,0));
-    vec4 bl1 = L4_1_texOff(vec2(-1,1));
-    vec4 bc1 = L4_1_texOff(vec2(0,1));
-    vec4 br1 = L4_1_texOff(vec2(1,1));
+    vec4 tl1 = L2_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L2_1_texOff(vec2(0,-1));
+    vec4 tr1 = L2_1_texOff(vec2(1,-1));
+    vec4 ml1 = L2_1_texOff(vec2(-1,0));
+    vec4 mc1 = L2_1_texOff(vec2(0,0));
+    vec4 mr1 = L2_1_texOff(vec2(1,0));
+    vec4 bl1 = L2_1_texOff(vec2(-1,1));
+    vec4 bc1 = L2_1_texOff(vec2(0,1));
+    vec4 br1 = L2_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L4_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L4_2_texOff(vec2(0,-1));
-    vec4 tr2 = L4_2_texOff(vec2(1,-1));
-    vec4 ml2 = L4_2_texOff(vec2(-1,0));
-    vec4 mc2 = L4_2_texOff(vec2(0,0));
-    vec4 mr2 = L4_2_texOff(vec2(1,0));
-    vec4 bl2 = L4_2_texOff(vec2(-1,1));
-    vec4 bc2 = L4_2_texOff(vec2(0,1));
-    vec4 br2 = L4_2_texOff(vec2(1,1));
+    vec4 tl2 = L2_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L2_2_texOff(vec2(0,-1));
+    vec4 tr2 = L2_2_texOff(vec2(1,-1));
+    vec4 ml2 = L2_2_texOff(vec2(-1,0));
+    vec4 mc2 = L2_2_texOff(vec2(0,0));
+    vec4 mr2 = L2_2_texOff(vec2(1,0));
+    vec4 bl2 = L2_2_texOff(vec2(-1,1));
+    vec4 bc2 = L2_2_texOff(vec2(0,1));
+    vec4 br2 = L2_2_texOff(vec2(1,1));
 
     vec4 c1234 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -2063,11 +2057,11 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L5
-//!BIND L4_1
-//!BIND L4_2
-//!SAVE L5_2
+//!BIND L2_1
+//!BIND L2_2
+//!SAVE L1_2
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -2179,25 +2173,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L4_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L4_1_texOff(vec2(0,-1));
-    vec4 tr1 = L4_1_texOff(vec2(1,-1));
-    vec4 ml1 = L4_1_texOff(vec2(-1,0));
-    vec4 mc1 = L4_1_texOff(vec2(0,0));
-    vec4 mr1 = L4_1_texOff(vec2(1,0));
-    vec4 bl1 = L4_1_texOff(vec2(-1,1));
-    vec4 bc1 = L4_1_texOff(vec2(0,1));
-    vec4 br1 = L4_1_texOff(vec2(1,1));
+    vec4 tl1 = L2_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L2_1_texOff(vec2(0,-1));
+    vec4 tr1 = L2_1_texOff(vec2(1,-1));
+    vec4 ml1 = L2_1_texOff(vec2(-1,0));
+    vec4 mc1 = L2_1_texOff(vec2(0,0));
+    vec4 mr1 = L2_1_texOff(vec2(1,0));
+    vec4 bl1 = L2_1_texOff(vec2(-1,1));
+    vec4 bc1 = L2_1_texOff(vec2(0,1));
+    vec4 br1 = L2_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L4_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L4_2_texOff(vec2(0,-1));
-    vec4 tr2 = L4_2_texOff(vec2(1,-1));
-    vec4 ml2 = L4_2_texOff(vec2(-1,0));
-    vec4 mc2 = L4_2_texOff(vec2(0,0));
-    vec4 mr2 = L4_2_texOff(vec2(1,0));
-    vec4 bl2 = L4_2_texOff(vec2(-1,1));
-    vec4 bc2 = L4_2_texOff(vec2(0,1));
-    vec4 br2 = L4_2_texOff(vec2(1,1));
+    vec4 tl2 = L2_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L2_2_texOff(vec2(0,-1));
+    vec4 tr2 = L2_2_texOff(vec2(1,-1));
+    vec4 ml2 = L2_2_texOff(vec2(-1,0));
+    vec4 mc2 = L2_2_texOff(vec2(0,0));
+    vec4 mr2 = L2_2_texOff(vec2(1,0));
+    vec4 bl2 = L2_2_texOff(vec2(-1,1));
+    vec4 bc2 = L2_2_texOff(vec2(0,1));
+    vec4 br2 = L2_2_texOff(vec2(1,1));
 
     vec4 c5678 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -2334,11 +2328,11 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L6
-//!BIND L5_1
-//!BIND L5_2
-//!SAVE L6_1
+//!BIND L1_1
+//!BIND L1_2
+//!SAVE L2_1
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -2450,25 +2444,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L5_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L5_1_texOff(vec2(0,-1));
-    vec4 tr1 = L5_1_texOff(vec2(1,-1));
-    vec4 ml1 = L5_1_texOff(vec2(-1,0));
-    vec4 mc1 = L5_1_texOff(vec2(0,0));
-    vec4 mr1 = L5_1_texOff(vec2(1,0));
-    vec4 bl1 = L5_1_texOff(vec2(-1,1));
-    vec4 bc1 = L5_1_texOff(vec2(0,1));
-    vec4 br1 = L5_1_texOff(vec2(1,1));
+    vec4 tl1 = L1_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L1_1_texOff(vec2(0,-1));
+    vec4 tr1 = L1_1_texOff(vec2(1,-1));
+    vec4 ml1 = L1_1_texOff(vec2(-1,0));
+    vec4 mc1 = L1_1_texOff(vec2(0,0));
+    vec4 mr1 = L1_1_texOff(vec2(1,0));
+    vec4 bl1 = L1_1_texOff(vec2(-1,1));
+    vec4 bc1 = L1_1_texOff(vec2(0,1));
+    vec4 br1 = L1_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L5_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L5_2_texOff(vec2(0,-1));
-    vec4 tr2 = L5_2_texOff(vec2(1,-1));
-    vec4 ml2 = L5_2_texOff(vec2(-1,0));
-    vec4 mc2 = L5_2_texOff(vec2(0,0));
-    vec4 mr2 = L5_2_texOff(vec2(1,0));
-    vec4 bl2 = L5_2_texOff(vec2(-1,1));
-    vec4 bc2 = L5_2_texOff(vec2(0,1));
-    vec4 br2 = L5_2_texOff(vec2(1,1));
+    vec4 tl2 = L1_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L1_2_texOff(vec2(0,-1));
+    vec4 tr2 = L1_2_texOff(vec2(1,-1));
+    vec4 ml2 = L1_2_texOff(vec2(-1,0));
+    vec4 mc2 = L1_2_texOff(vec2(0,0));
+    vec4 mr2 = L1_2_texOff(vec2(1,0));
+    vec4 bl2 = L1_2_texOff(vec2(-1,1));
+    vec4 bc2 = L1_2_texOff(vec2(0,1));
+    vec4 br2 = L1_2_texOff(vec2(1,1));
 
     vec4 c1234 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -2606,11 +2600,11 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L6
-//!BIND L5_1
-//!BIND L5_2
-//!SAVE L6_2
+//!BIND L1_1
+//!BIND L1_2
+//!SAVE L2_2
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -2722,25 +2716,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L5_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L5_1_texOff(vec2(0,-1));
-    vec4 tr1 = L5_1_texOff(vec2(1,-1));
-    vec4 ml1 = L5_1_texOff(vec2(-1,0));
-    vec4 mc1 = L5_1_texOff(vec2(0,0));
-    vec4 mr1 = L5_1_texOff(vec2(1,0));
-    vec4 bl1 = L5_1_texOff(vec2(-1,1));
-    vec4 bc1 = L5_1_texOff(vec2(0,1));
-    vec4 br1 = L5_1_texOff(vec2(1,1));
+    vec4 tl1 = L1_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L1_1_texOff(vec2(0,-1));
+    vec4 tr1 = L1_1_texOff(vec2(1,-1));
+    vec4 ml1 = L1_1_texOff(vec2(-1,0));
+    vec4 mc1 = L1_1_texOff(vec2(0,0));
+    vec4 mr1 = L1_1_texOff(vec2(1,0));
+    vec4 bl1 = L1_1_texOff(vec2(-1,1));
+    vec4 bc1 = L1_1_texOff(vec2(0,1));
+    vec4 br1 = L1_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L5_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L5_2_texOff(vec2(0,-1));
-    vec4 tr2 = L5_2_texOff(vec2(1,-1));
-    vec4 ml2 = L5_2_texOff(vec2(-1,0));
-    vec4 mc2 = L5_2_texOff(vec2(0,0));
-    vec4 mr2 = L5_2_texOff(vec2(1,0));
-    vec4 bl2 = L5_2_texOff(vec2(-1,1));
-    vec4 bc2 = L5_2_texOff(vec2(0,1));
-    vec4 br2 = L5_2_texOff(vec2(1,1));
+    vec4 tl2 = L1_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L1_2_texOff(vec2(0,-1));
+    vec4 tr2 = L1_2_texOff(vec2(1,-1));
+    vec4 ml2 = L1_2_texOff(vec2(-1,0));
+    vec4 mc2 = L1_2_texOff(vec2(0,0));
+    vec4 mr2 = L1_2_texOff(vec2(1,0));
+    vec4 bl2 = L1_2_texOff(vec2(-1,1));
+    vec4 bc2 = L1_2_texOff(vec2(0,1));
+    vec4 br2 = L1_2_texOff(vec2(1,1));
 
     vec4 c5678 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -2877,11 +2871,11 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L7
-//!BIND L6_1
-//!BIND L6_2
-//!SAVE L7_1
+//!BIND L2_1
+//!BIND L2_2
+//!SAVE L1_1
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -2993,25 +2987,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L6_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L6_1_texOff(vec2(0,-1));
-    vec4 tr1 = L6_1_texOff(vec2(1,-1));
-    vec4 ml1 = L6_1_texOff(vec2(-1,0));
-    vec4 mc1 = L6_1_texOff(vec2(0,0));
-    vec4 mr1 = L6_1_texOff(vec2(1,0));
-    vec4 bl1 = L6_1_texOff(vec2(-1,1));
-    vec4 bc1 = L6_1_texOff(vec2(0,1));
-    vec4 br1 = L6_1_texOff(vec2(1,1));
+    vec4 tl1 = L2_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L2_1_texOff(vec2(0,-1));
+    vec4 tr1 = L2_1_texOff(vec2(1,-1));
+    vec4 ml1 = L2_1_texOff(vec2(-1,0));
+    vec4 mc1 = L2_1_texOff(vec2(0,0));
+    vec4 mr1 = L2_1_texOff(vec2(1,0));
+    vec4 bl1 = L2_1_texOff(vec2(-1,1));
+    vec4 bc1 = L2_1_texOff(vec2(0,1));
+    vec4 br1 = L2_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L6_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L6_2_texOff(vec2(0,-1));
-    vec4 tr2 = L6_2_texOff(vec2(1,-1));
-    vec4 ml2 = L6_2_texOff(vec2(-1,0));
-    vec4 mc2 = L6_2_texOff(vec2(0,0));
-    vec4 mr2 = L6_2_texOff(vec2(1,0));
-    vec4 bl2 = L6_2_texOff(vec2(-1,1));
-    vec4 bc2 = L6_2_texOff(vec2(0,1));
-    vec4 br2 = L6_2_texOff(vec2(1,1));
+    vec4 tl2 = L2_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L2_2_texOff(vec2(0,-1));
+    vec4 tr2 = L2_2_texOff(vec2(1,-1));
+    vec4 ml2 = L2_2_texOff(vec2(-1,0));
+    vec4 mc2 = L2_2_texOff(vec2(0,0));
+    vec4 mr2 = L2_2_texOff(vec2(1,0));
+    vec4 bl2 = L2_2_texOff(vec2(-1,1));
+    vec4 bc2 = L2_2_texOff(vec2(0,1));
+    vec4 br2 = L2_2_texOff(vec2(1,1));
 
     vec4 c1234 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -3149,11 +3143,11 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L7
-//!BIND L6_1
-//!BIND L6_2
-//!SAVE L7_2
+//!BIND L2_1
+//!BIND L2_2
+//!SAVE L1_2
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -3265,25 +3259,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L6_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L6_1_texOff(vec2(0,-1));
-    vec4 tr1 = L6_1_texOff(vec2(1,-1));
-    vec4 ml1 = L6_1_texOff(vec2(-1,0));
-    vec4 mc1 = L6_1_texOff(vec2(0,0));
-    vec4 mr1 = L6_1_texOff(vec2(1,0));
-    vec4 bl1 = L6_1_texOff(vec2(-1,1));
-    vec4 bc1 = L6_1_texOff(vec2(0,1));
-    vec4 br1 = L6_1_texOff(vec2(1,1));
+    vec4 tl1 = L2_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L2_1_texOff(vec2(0,-1));
+    vec4 tr1 = L2_1_texOff(vec2(1,-1));
+    vec4 ml1 = L2_1_texOff(vec2(-1,0));
+    vec4 mc1 = L2_1_texOff(vec2(0,0));
+    vec4 mr1 = L2_1_texOff(vec2(1,0));
+    vec4 bl1 = L2_1_texOff(vec2(-1,1));
+    vec4 bc1 = L2_1_texOff(vec2(0,1));
+    vec4 br1 = L2_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L6_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L6_2_texOff(vec2(0,-1));
-    vec4 tr2 = L6_2_texOff(vec2(1,-1));
-    vec4 ml2 = L6_2_texOff(vec2(-1,0));
-    vec4 mc2 = L6_2_texOff(vec2(0,0));
-    vec4 mr2 = L6_2_texOff(vec2(1,0));
-    vec4 bl2 = L6_2_texOff(vec2(-1,1));
-    vec4 bc2 = L6_2_texOff(vec2(0,1));
-    vec4 br2 = L6_2_texOff(vec2(1,1));
+    vec4 tl2 = L2_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L2_2_texOff(vec2(0,-1));
+    vec4 tr2 = L2_2_texOff(vec2(1,-1));
+    vec4 ml2 = L2_2_texOff(vec2(-1,0));
+    vec4 mc2 = L2_2_texOff(vec2(0,0));
+    vec4 mr2 = L2_2_texOff(vec2(1,0));
+    vec4 bl2 = L2_2_texOff(vec2(-1,1));
+    vec4 bc2 = L2_2_texOff(vec2(0,1));
+    vec4 br2 = L2_2_texOff(vec2(1,1));
 
     vec4 c5678 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -3420,11 +3414,11 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L8
-//!BIND L7_1
-//!BIND L7_2
-//!SAVE L8_1
+//!BIND L1_1
+//!BIND L1_2
+//!SAVE L2_1
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -3536,25 +3530,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L7_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L7_1_texOff(vec2(0,-1));
-    vec4 tr1 = L7_1_texOff(vec2(1,-1));
-    vec4 ml1 = L7_1_texOff(vec2(-1,0));
-    vec4 mc1 = L7_1_texOff(vec2(0,0));
-    vec4 mr1 = L7_1_texOff(vec2(1,0));
-    vec4 bl1 = L7_1_texOff(vec2(-1,1));
-    vec4 bc1 = L7_1_texOff(vec2(0,1));
-    vec4 br1 = L7_1_texOff(vec2(1,1));
+    vec4 tl1 = L1_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L1_1_texOff(vec2(0,-1));
+    vec4 tr1 = L1_1_texOff(vec2(1,-1));
+    vec4 ml1 = L1_1_texOff(vec2(-1,0));
+    vec4 mc1 = L1_1_texOff(vec2(0,0));
+    vec4 mr1 = L1_1_texOff(vec2(1,0));
+    vec4 bl1 = L1_1_texOff(vec2(-1,1));
+    vec4 bc1 = L1_1_texOff(vec2(0,1));
+    vec4 br1 = L1_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L7_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L7_2_texOff(vec2(0,-1));
-    vec4 tr2 = L7_2_texOff(vec2(1,-1));
-    vec4 ml2 = L7_2_texOff(vec2(-1,0));
-    vec4 mc2 = L7_2_texOff(vec2(0,0));
-    vec4 mr2 = L7_2_texOff(vec2(1,0));
-    vec4 bl2 = L7_2_texOff(vec2(-1,1));
-    vec4 bc2 = L7_2_texOff(vec2(0,1));
-    vec4 br2 = L7_2_texOff(vec2(1,1));
+    vec4 tl2 = L1_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L1_2_texOff(vec2(0,-1));
+    vec4 tr2 = L1_2_texOff(vec2(1,-1));
+    vec4 ml2 = L1_2_texOff(vec2(-1,0));
+    vec4 mc2 = L1_2_texOff(vec2(0,0));
+    vec4 mr2 = L1_2_texOff(vec2(1,0));
+    vec4 bl2 = L1_2_texOff(vec2(-1,1));
+    vec4 bc2 = L1_2_texOff(vec2(0,1));
+    vec4 br2 = L1_2_texOff(vec2(1,1));
 
     vec4 c1234 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -3692,11 +3686,11 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L8
-//!BIND L7_1
-//!BIND L7_2
-//!SAVE L8_2
+//!BIND L1_1
+//!BIND L1_2
+//!SAVE L2_2
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -3808,25 +3802,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L7_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L7_1_texOff(vec2(0,-1));
-    vec4 tr1 = L7_1_texOff(vec2(1,-1));
-    vec4 ml1 = L7_1_texOff(vec2(-1,0));
-    vec4 mc1 = L7_1_texOff(vec2(0,0));
-    vec4 mr1 = L7_1_texOff(vec2(1,0));
-    vec4 bl1 = L7_1_texOff(vec2(-1,1));
-    vec4 bc1 = L7_1_texOff(vec2(0,1));
-    vec4 br1 = L7_1_texOff(vec2(1,1));
+    vec4 tl1 = L1_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L1_1_texOff(vec2(0,-1));
+    vec4 tr1 = L1_1_texOff(vec2(1,-1));
+    vec4 ml1 = L1_1_texOff(vec2(-1,0));
+    vec4 mc1 = L1_1_texOff(vec2(0,0));
+    vec4 mr1 = L1_1_texOff(vec2(1,0));
+    vec4 bl1 = L1_1_texOff(vec2(-1,1));
+    vec4 bc1 = L1_1_texOff(vec2(0,1));
+    vec4 br1 = L1_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L7_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L7_2_texOff(vec2(0,-1));
-    vec4 tr2 = L7_2_texOff(vec2(1,-1));
-    vec4 ml2 = L7_2_texOff(vec2(-1,0));
-    vec4 mc2 = L7_2_texOff(vec2(0,0));
-    vec4 mr2 = L7_2_texOff(vec2(1,0));
-    vec4 bl2 = L7_2_texOff(vec2(-1,1));
-    vec4 bc2 = L7_2_texOff(vec2(0,1));
-    vec4 br2 = L7_2_texOff(vec2(1,1));
+    vec4 tl2 = L1_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L1_2_texOff(vec2(0,-1));
+    vec4 tr2 = L1_2_texOff(vec2(1,-1));
+    vec4 ml2 = L1_2_texOff(vec2(-1,0));
+    vec4 mc2 = L1_2_texOff(vec2(0,0));
+    vec4 mr2 = L1_2_texOff(vec2(1,0));
+    vec4 bl2 = L1_2_texOff(vec2(-1,1));
+    vec4 bc2 = L1_2_texOff(vec2(0,1));
+    vec4 br2 = L1_2_texOff(vec2(1,1));
 
     vec4 c5678 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -3963,11 +3957,11 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L9
-//!BIND L8_1
-//!BIND L8_2
-//!SAVE L9_1
+//!BIND L2_1
+//!BIND L2_2
+//!SAVE L1_1
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -4079,25 +4073,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L8_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L8_1_texOff(vec2(0,-1));
-    vec4 tr1 = L8_1_texOff(vec2(1,-1));
-    vec4 ml1 = L8_1_texOff(vec2(-1,0));
-    vec4 mc1 = L8_1_texOff(vec2(0,0));
-    vec4 mr1 = L8_1_texOff(vec2(1,0));
-    vec4 bl1 = L8_1_texOff(vec2(-1,1));
-    vec4 bc1 = L8_1_texOff(vec2(0,1));
-    vec4 br1 = L8_1_texOff(vec2(1,1));
+    vec4 tl1 = L2_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L2_1_texOff(vec2(0,-1));
+    vec4 tr1 = L2_1_texOff(vec2(1,-1));
+    vec4 ml1 = L2_1_texOff(vec2(-1,0));
+    vec4 mc1 = L2_1_texOff(vec2(0,0));
+    vec4 mr1 = L2_1_texOff(vec2(1,0));
+    vec4 bl1 = L2_1_texOff(vec2(-1,1));
+    vec4 bc1 = L2_1_texOff(vec2(0,1));
+    vec4 br1 = L2_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L8_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L8_2_texOff(vec2(0,-1));
-    vec4 tr2 = L8_2_texOff(vec2(1,-1));
-    vec4 ml2 = L8_2_texOff(vec2(-1,0));
-    vec4 mc2 = L8_2_texOff(vec2(0,0));
-    vec4 mr2 = L8_2_texOff(vec2(1,0));
-    vec4 bl2 = L8_2_texOff(vec2(-1,1));
-    vec4 bc2 = L8_2_texOff(vec2(0,1));
-    vec4 br2 = L8_2_texOff(vec2(1,1));
+    vec4 tl2 = L2_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L2_2_texOff(vec2(0,-1));
+    vec4 tr2 = L2_2_texOff(vec2(1,-1));
+    vec4 ml2 = L2_2_texOff(vec2(-1,0));
+    vec4 mc2 = L2_2_texOff(vec2(0,0));
+    vec4 mr2 = L2_2_texOff(vec2(1,0));
+    vec4 bl2 = L2_2_texOff(vec2(-1,1));
+    vec4 bc2 = L2_2_texOff(vec2(0,1));
+    vec4 br2 = L2_2_texOff(vec2(1,1));
 
     vec4 c1234 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -4235,11 +4229,11 @@ vec4 hook()
 
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L9
-//!BIND L8_1
-//!BIND L8_2
-//!SAVE L9_2
+//!BIND L2_1
+//!BIND L2_2
+//!SAVE L1_2
 //!COMPONENTS 4
 
 #define RELU(x) max(x, 0.0f)
@@ -4351,25 +4345,25 @@ const float biasL[4] =
 
 vec4 hook()
 {
-    vec4 tl1 = L8_1_texOff(vec2(-1,-1));
-    vec4 tc1 = L8_1_texOff(vec2(0,-1));
-    vec4 tr1 = L8_1_texOff(vec2(1,-1));
-    vec4 ml1 = L8_1_texOff(vec2(-1,0));
-    vec4 mc1 = L8_1_texOff(vec2(0,0));
-    vec4 mr1 = L8_1_texOff(vec2(1,0));
-    vec4 bl1 = L8_1_texOff(vec2(-1,1));
-    vec4 bc1 = L8_1_texOff(vec2(0,1));
-    vec4 br1 = L8_1_texOff(vec2(1,1));
+    vec4 tl1 = L2_1_texOff(vec2(-1,-1));
+    vec4 tc1 = L2_1_texOff(vec2(0,-1));
+    vec4 tr1 = L2_1_texOff(vec2(1,-1));
+    vec4 ml1 = L2_1_texOff(vec2(-1,0));
+    vec4 mc1 = L2_1_texOff(vec2(0,0));
+    vec4 mr1 = L2_1_texOff(vec2(1,0));
+    vec4 bl1 = L2_1_texOff(vec2(-1,1));
+    vec4 bc1 = L2_1_texOff(vec2(0,1));
+    vec4 br1 = L2_1_texOff(vec2(1,1));
 
-    vec4 tl2 = L8_2_texOff(vec2(-1,-1));
-    vec4 tc2 = L8_2_texOff(vec2(0,-1));
-    vec4 tr2 = L8_2_texOff(vec2(1,-1));
-    vec4 ml2 = L8_2_texOff(vec2(-1,0));
-    vec4 mc2 = L8_2_texOff(vec2(0,0));
-    vec4 mr2 = L8_2_texOff(vec2(1,0));
-    vec4 bl2 = L8_2_texOff(vec2(-1,1));
-    vec4 bc2 = L8_2_texOff(vec2(0,1));
-    vec4 br2 = L8_2_texOff(vec2(1,1));
+    vec4 tl2 = L2_2_texOff(vec2(-1,-1));
+    vec4 tc2 = L2_2_texOff(vec2(0,-1));
+    vec4 tr2 = L2_2_texOff(vec2(1,-1));
+    vec4 ml2 = L2_2_texOff(vec2(-1,0));
+    vec4 mc2 = L2_2_texOff(vec2(0,0));
+    vec4 mr2 = L2_2_texOff(vec2(1,0));
+    vec4 bl2 = L2_2_texOff(vec2(-1,1));
+    vec4 bc2 = L2_2_texOff(vec2(0,1));
+    vec4 br2 = L2_2_texOff(vec2(1,1));
 
     vec4 c5678 = RELU(vec4(
         tl1.x * kernelsL[0*72+0*9+0] + tc1.x * kernelsL[0*72+0*9+1] + tr1.x * kernelsL[0*72+0*9+2] +
@@ -4506,13 +4500,12 @@ vec4 hook()
 }
 
 //!HOOK LUMA
-//!WHEN OUTPUT.w LUMA.w / 1.400 > OUTPUT.h LUMA.h / 1.400 > *
+//!WHEN OUTPUT.w LUMA.w / 1.200 > OUTPUT.h LUMA.h / 1.200 > *
 //!DESC ACNet L10
 //!WIDTH LUMA.w 2 *
 //!HEIGHT LUMA.h 2 *
-//!BIND L9_1
-//!BIND L9_2
-//!BIND HOOKED
+//!BIND L1_1
+//!BIND L1_2
 //!COMPUTE 32 32
 
 const float kernelsL10[4 * 8] = 
@@ -4539,18 +4532,15 @@ void hook()
 {
     ivec2 coord = ivec2(gl_GlobalInvocationID);
     ivec2 pos = coord & 1;
-    vec2 tmp = ivec2(coord / 2) + 0.5;
-    vec4 mc1 = L9_1_tex(tmp * HOOKED_pt);
-    vec4 mc2 = L9_2_tex(tmp * HOOKED_pt);
+    vec2 orgCoord = ivec2(coord / 2) + 0.5;
+
+    vec4 mc1 = L1_1_tex(orgCoord * L1_1_pt);
+    vec4 mc2 = L1_2_tex(orgCoord * L1_2_pt);
+
     vec4 c;
 
-    // 180 degree rotation for kernel
-    // 0 1  to  3 2
-    // 2 3      1 0
     if (pos.x == 0 && pos.y != 0)
     {
-        //0 x
-        //0 0
         float tmp = clamp(
             mc1.x * kernelsL10[0*4+2] +
             mc1.y * kernelsL10[1*4+2] +
@@ -4565,8 +4555,6 @@ void hook()
     }
     else if (pos.x == 0 && pos.y == 0)
     {
-        //0 0
-        //0 x
         float tmp = clamp(
             mc1.x * kernelsL10[0*4+0] +
             mc1.y * kernelsL10[1*4+0] +
@@ -4581,8 +4569,6 @@ void hook()
     }
     else if (pos.x != 0 && pos.y == 0)
     {
-        //0 0
-        //x 0
         float tmp = clamp(
             mc1.x * kernelsL10[0*4+1] +
             mc1.y * kernelsL10[1*4+1] +
@@ -4597,8 +4583,6 @@ void hook()
     }
     else if (pos.x != 0 && pos.y != 0)
     {
-        //x 0
-        //0 0
         float tmp = clamp(
             mc1.x * kernelsL10[0*4+3] +
             mc1.y * kernelsL10[1*4+3] +

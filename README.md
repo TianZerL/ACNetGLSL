@@ -8,7 +8,6 @@ This GLSL implementation can be used in [MPV player](https://mpv.io), it is cros
 
     ```conf
     profile=gpu-hq
-    scale=ewa_lanczossharp
     glsl-shader="~~/ACNet.glsl"
     ```
 4. When playing the video, press `Shift + i` and then `2` to check if it is enabled.
