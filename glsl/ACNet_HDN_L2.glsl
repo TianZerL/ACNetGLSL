@@ -4537,14 +4537,14 @@ vec4 hook()
     vec4 mc2 = L1_2_tex(pos);
 
     float luma = clamp(
-    mc1.x * kernelsL10[0 + index.y*2 + index.x] +
-    mc1.y * kernelsL10[4 + index.y*2 + index.x] +
-    mc1.z * kernelsL10[8 + index.y*2 + index.x] +
-    mc1.w * kernelsL10[12 + index.y*2 + index.x] +
-    mc2.x * kernelsL10[16 + index.y*2 + index.x] +
-    mc2.y * kernelsL10[20 + index.y*2 + index.x] +
-    mc2.z * kernelsL10[24 + index.y*2 + index.x] +
-    mc2.w * kernelsL10[28 + index.y*2 + index.x], 0.0f, 1.0f);
+        mc1.x * kernelsL10[0 + index.y*2 + index.x] +
+        mc1.y * kernelsL10[4 + index.y*2 + index.x] +
+        mc1.z * kernelsL10[8 + index.y*2 + index.x] +
+        mc1.w * kernelsL10[12 + index.y*2 + index.x] +
+        mc2.x * kernelsL10[16 + index.y*2 + index.x] +
+        mc2.y * kernelsL10[20 + index.y*2 + index.x] +
+        mc2.z * kernelsL10[24 + index.y*2 + index.x] +
+        mc2.w * kernelsL10[28 + index.y*2 + index.x], 0.0f, 1.0f);
     
     return vec4(luma, 0.0f, 0.0f, 1.0f);
 }
