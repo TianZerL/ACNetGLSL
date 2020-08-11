@@ -34,7 +34,7 @@ SOFTWARE.
 //!SAVE L1_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL1[9 * 4] = 
 {
@@ -98,7 +98,7 @@ vec4 hook()
 //!SAVE L1_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL1[9 * 4] = 
 {
@@ -163,7 +163,7 @@ vec4 hook()
 //!SAVE L2_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -435,7 +435,7 @@ vec4 hook()
 //!SAVE L2_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -706,7 +706,7 @@ vec4 hook()
 //!SAVE L1_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -978,7 +978,7 @@ vec4 hook()
 //!SAVE L1_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -1249,7 +1249,7 @@ vec4 hook()
 //!SAVE L2_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -1521,7 +1521,7 @@ vec4 hook()
 //!SAVE L2_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -1792,7 +1792,7 @@ vec4 hook()
 //!SAVE L1_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -2064,7 +2064,7 @@ vec4 hook()
 //!SAVE L1_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -2335,7 +2335,7 @@ vec4 hook()
 //!SAVE L2_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -2607,7 +2607,7 @@ vec4 hook()
 //!SAVE L2_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -2878,7 +2878,7 @@ vec4 hook()
 //!SAVE L1_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -3150,7 +3150,7 @@ vec4 hook()
 //!SAVE L1_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -3421,7 +3421,7 @@ vec4 hook()
 //!SAVE L2_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -3693,7 +3693,7 @@ vec4 hook()
 //!SAVE L2_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -3964,7 +3964,7 @@ vec4 hook()
 //!SAVE L1_1
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
@@ -4236,7 +4236,7 @@ vec4 hook()
 //!SAVE L1_2
 //!COMPONENTS 4
 
-#define RELU(x) max(x, 0.0f)
+#define RELU(x) max(x, vec4(0.0f))
 
 const float kernelsL[9 * 8 * 4] = 
 {
