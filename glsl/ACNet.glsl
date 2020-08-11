@@ -4506,7 +4506,6 @@ vec4 hook()
 //!HEIGHT LUMA.h 2 *
 //!BIND L1_1
 //!BIND L1_2
-//!COMPUTE 32 32
 
 const float kernelsL10[4 * 8] = 
 {
@@ -4528,14 +4527,15 @@ const float kernelsL10[4 * 8] =
  0.0415, -0.1858
 };
 
-void hook()
+vec4 hook()
 {
-    ivec2 coord = ivec2(gl_GlobalInvocationID);
-    ivec2 pos = coord & 1;
-    vec2 orgCoord = ivec2(coord / 2) + 0.5;
+    vec2 fcoord = fract(L1_1_pos * L1_1_size);
+    vec2 base = L1_1_pos + (vec2(0.5) - fcoord) * L1_1_pt;
 
-    vec4 mc1 = L1_1_tex(orgCoord * L1_1_pt);
-    vec4 mc2 = L1_2_tex(orgCoord * L1_2_pt);
+    ivec2 pos = ivec2(fcoord * vec2(2));
+
+    vec4 mc1 = L1_1_tex(base);
+    vec4 mc2 = L1_2_tex(base);
 
     vec4 c;
 
@@ -4596,5 +4596,5 @@ void hook()
         c = vec4(tmp, 0.0f, 0.0f, 1.0f);
     }
 
-    imageStore(out_image, coord, c);
+    return c;
 }
