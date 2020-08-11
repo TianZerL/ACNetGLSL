@@ -4531,20 +4531,22 @@ vec4 hook()
 {
     vec2 fcoord = fract(L1_1_pos * L1_1_size);
     vec2 pos = L1_1_pos + (vec2(0.5) - fcoord) * L1_1_pt;
-    ivec2 index = ivec2(fcoord * vec2(2));
+
+    ivec2 icoord = ivec2(fcoord * vec2(2));
+    int inedx = icoord.y * 2 + icoord.x;
 
     vec4 mc1 = L1_1_tex(pos);
     vec4 mc2 = L1_2_tex(pos);
 
     float luma = clamp(
-        mc1.x * kernelsL10[0 + index.y*2 + index.x] +
-        mc1.y * kernelsL10[4 + index.y*2 + index.x] +
-        mc1.z * kernelsL10[8 + index.y*2 + index.x] +
-        mc1.w * kernelsL10[12 + index.y*2 + index.x] +
-        mc2.x * kernelsL10[16 + index.y*2 + index.x] +
-        mc2.y * kernelsL10[20 + index.y*2 + index.x] +
-        mc2.z * kernelsL10[24 + index.y*2 + index.x] +
-        mc2.w * kernelsL10[28 + index.y*2 + index.x], 0.0f, 1.0f);
+        mc1.x * kernelsL10[0 + inedx] +
+        mc1.y * kernelsL10[4 + inedx] +
+        mc1.z * kernelsL10[8 + inedx] +
+        mc1.w * kernelsL10[12 + inedx] +
+        mc2.x * kernelsL10[16 + inedx] +
+        mc2.y * kernelsL10[20 + inedx] +
+        mc2.z * kernelsL10[24 + inedx] +
+        mc2.w * kernelsL10[28 + inedx], 0.0f, 1.0f);
     
     return vec4(luma, 0.0f, 0.0f, 1.0f);
 }
