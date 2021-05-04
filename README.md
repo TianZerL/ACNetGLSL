@@ -11,3 +11,11 @@ This GLSL implementation can be used in [MPV player](https://mpv.io), it is cros
     glsl-shader="~~/ACNet.glsl"
     ```
 4. When playing the video, press `Shift + i` and then `2` to check if it is enabled.
+5. You may also switch the shader by keyboard if you can edit input.conf.
+    ```input.conf
+    Meta+0 no-osd change-list glsl-shaders clr ""; show-text "GLSL shaders cleared"
+    Meta+1 no-osd change-list glsl-shaders set "~/.config/mpv/shaders/ACNet_HDN_L1.glsl"; show-text "Anime4k: ACNet_HDN_L1"
+    Meta+2 no-osd change-list glsl-shaders set "~/.config/mpv/shaders/ACNet_HDN_L2.glsl"; show-text "Anime4k: ACNet_HDN_L2"
+    Meta+3 no-osd change-list glsl-shaders set "~/.config/mpv/shaders/ACNet_HDN_L3.glsl"; show-text "Anime4k: ACNet_HDN_L3"
+    ```
+
